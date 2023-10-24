@@ -1,10 +1,188 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!doctype html>
 
+<html lang="ru" class="h-100" data-bs-theme="auto">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>question</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link href="../static/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <meta name="theme-color" content="#712cf9">
+
+    <!-- Custom styles for this template -->
+    <link href="../static/css/main.css" rel="stylesheet">
+</head>
+
+<body class="d-flex flex-column h-100">
+
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark ">
+    <div class="container">
+
+        <div class="col-3 text-start">
+        <a class="navbar-brand headers" href="index.html">
+            <img src="../static/jpeg/Untitled_logo_2_free-file.jpg" width="50" height="50" alt="Logo" >
+            PryPort
+        </a>
+        </div>
+
+        <div class="col-6 text-center">
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+
+            <form class="d-flex flex-grow-1 p-2" role="search">
+                <input class="form-control me-2 " type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-warning" type="submit">Search</button>
+            </form>
+
+        </div>
+        </div>
+
+        <div class="col-3 text-end">
+
+            <div>
+                <a href="login.html">
+                <button type="button" class="btn btn-outline-warning me-2">Login</button>
+                </a>
+                <a href="signup.html">
+                <button type="button" class="btn btn-warning">Sign-up</button>
+                </a>
+            </div>
+
+<!--            <div class="btn-group dropdown">-->
+<!--                <button class="btn btn-dark text-light dropdown-toggle m-2" data-bs-toggle="dropdown" aria-expanded="false">-->
+<!--                    Name-->
+<!--                </button>-->
+<!--                <img src="../static/jpeg/ava-vk-cats-90.jpg" alt="mdo" width="50" height="50" class="rounded-3">-->
+<!--                <ul class="dropdown-menu" data-bs-theme="dark" style="">-->
+<!--                    <li><a class="dropdown-item " href="#">My questions</a></li>-->
+<!--                    <li><a class="dropdown-item" href="ask.html">New question</a></li>-->
+<!--                    <li><a class="dropdown-item" href="#">Settings</a></li>-->
+<!--                    <li><a class="dropdown-item" href="#">Profile</a></li>-->
+<!--                    <li><hr class="dropdown-divider"></li>-->
+<!--                    <li><a class="dropdown-item" href="#">Sign out</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+
+        </div>
+
+    </div>
+    </nav>
+
+</header>
+
+<!-- Begin page content -->
+<main class="flex-shrink-0">
+
+    <div class="container">
+    <div class="row" >
+    <div class="col-md-9">
+        <h1 class="h1 text-center headers mt-5">&nbsp;</h1>
+
+        <div class="border border-warning rounded p-3">
+             <div class="row">
+
+                <div class="col-3 m-3 text-dark ">
+                    <img class="rounded w-100" src="../static/png/default-avatar.png" alt="Avatar">
+                    <button class="btn btn-outline-warning mt-3 w-100" type="submit">
+                        <span class="text-dark text-start">Vote</span>
+                        <span class="badge bg-warning rounded-pill text-end">14</span>
+                    </button>
+                </div>
+
+                <div class="col-8 mt-3">
+                    <h4 class="h4 text-center ">Why Visual studio don't give me an output?</h4>
+                    <p class="mt-4">
+                    i'm newbie in Ruby. Today i was coding some home exercise and founding this behavior of my code: if i try to execute the same code in irb and VSC in second case i don't get a single string of output.
+                    <br/>
+                    Here's example from VSC:
+                    <br/>
+                    def even_or_odd(number)<br/>
+                      number.even? ? "Even" : "Odd"<br/>
+                    end<br/>
+                    even_or_odd(number)<br/>
+                    This code don't give me an output in VSC, but if i try to execute this code in irb it works fine:<br/>
+                    <br/>
+                    irb(main):001:1* def even_or_odd(number)<br/>
+                    irb(main):002:1*   number.even? ? "Even" : "Odd"<br/>
+                    irb(main):003:0> end<br/>
+                    => :even_or_odd<br/>
+                    irb(main):004:0> even_or_odd(32)<br/>
+                    => "Even"<br/>
+                    irb(main):005:0><br/>
+                    What's the point?<br/>
+                    </p>
+
+                    <ul class="list-group list-group-horizontal float-end mb-3 mrg-top-7">
+                        <a href="#" class="list-group-item list-group-item-secondary list-group-item-action">Ruby</a>
+                        <a href="#" class="list-group-item list-group-item-secondary list-group-item-action">Visual&nbsp;Studio</a>
+                        <a href="#" class="list-group-item list-group-item-secondary list-group-item-action">Microsoft</a>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+         <h3 class="h3 text-center headers mt-5">Answers</h3>
+
+        <div class="border border-warning rounded p-3">
+        </div>
+
+    </div>
+
+    <div class="col-md-3 float-end">
+      <div class="position-sticky" style="top: 6rem;">
+
+        <div class="mt-5">
+          <h4 class="headers h3">Popular Tags</h4>
+            <ul class="list-group">
+                <a href="#" class="list-group-item list-group-item-action">Apple</a>
+                <a href="#" class="list-group-item list-group-item-primary list-group-item-action">HTML</a>
+                <a href="#" class="list-group-item list-group-item-secondary list-group-item-action">Microsoft</a>
+                <a href="#" class="list-group-item list-group-item-success list-group-item-action">Java</a>
+                <a href="#" class="list-group-item list-group-item-danger list-group-item-action">Linux</a>
+                <a href="#" class="list-group-item list-group-item-warning list-group-item-action">GNU</a>
+                <a href="#" class="list-group-item list-group-item-info list-group-item-action">Codd's 12 rules</a>
+                <a href="#" class="list-group-item list-group-item-light list-group-item-action">Telegram</a>
+                <a href="#" class="list-group-item list-group-item-dark list-group-item-action">Steam</a>
+            </ul>
+        </div>
+
+        <div class="p-4">
+          <h4 class="headers h3">Best Members</h4>
+          <ol class="list-unstyled mb-0">
+            <li><a href="#">Steve Jobs</a></li>
+            <li><a href="#">Tim Berners-Lee</a></li>
+            <li><a href="#">Bill Gates</a></li>
+            <li><a href="#">James Gosling</a></li>
+            <li><a href="#">Linus Torvalds</a></li>
+            <li><a href="#">Richard Stallman</a></li>
+            <li><a href="#">Arthur C Clark</a></li>
+            <li><a href="#">Ted Codd</a></li>
+            <li><a href="#">Steve Shirley</a></li>
+            <li><a href="#">Pavel Durov</a></li>
+            <li><a href="#">Gabe Newell</a></li>
+            <li><a href="#">John Carmack</a></li>
+          </ol>
+        </div>
+
+      </div>
+    </div>
+
+    </div>
+    </div>
+
+</main>
+
+<footer class="footer mt-auto py-3 bg-body-tertiary">
+    <div class="container">
+        <span class="text-body-secondary">COPYRIGHT © 2023, ALL RIGHTS RESERVED.</span>
+    </div>
+</footer>
+
+<script src="../static/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

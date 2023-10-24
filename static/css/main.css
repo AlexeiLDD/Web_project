@@ -17,3 +17,7 @@ main > .container {
     padding: 0 15px;
     margin: 0 auto;
 }
+
+.mrg-top-7 {
+    margin-top: 7%;
+}
