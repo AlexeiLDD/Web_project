@@ -1,3 +1,5 @@
+{% load static %}
+
 <!doctype html>
 
 <html lang="ru" class="h-100" data-bs-theme="auto">
@@ -6,14 +8,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>base</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
-    <link href="../../static/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <!-- Favicons -->
     <meta name="theme-color" content="#712cf9">
-
     <!-- Custom styles for this template -->
-    <link href="../../static/css/main.css" rel="stylesheet">
+    <link href="{% static '/css/main.css' %}" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column h-100">
@@ -24,8 +23,8 @@
     <div class="container">
 
         <div class="col-3 text-start">
-        <a class="navbar-brand headers" href="../index.html">
-            <img src="../../static/jpeg/Untitled_logo_2_free-file.jpg" width="50" height="50" alt="Logo" >
+        <a class="navbar-brand headers" href="{% url 'index' %}">
+            <img src="{% static '/jpeg/Untitled_logo_2_free-file.jpg' %}" width="50" height="50" alt="Logo" >
             PryPort
         </a>
         </div>
@@ -56,7 +55,7 @@
                 <button class="btn btn-dark text-light dropdown-toggle m-2" data-bs-toggle="dropdown" aria-expanded="false">
                     Name
                 </button>
-                <img src="../../static/jpeg/ava-vk-cats-90.jpg" alt="mdo" width="50" height="50" class="rounded-3">
+                <img src="{% static '/jpeg/ava-vk-cats-90.jpg' %}" alt="mdo" width="50" height="50" class="rounded-3">
                 <ul class="dropdown-menu" data-bs-theme="dark" style="">
                     <li><a class="dropdown-item " href="#">My questions</a></li>
                     <li><a class="dropdown-item" href="../ask.html">New question</a></li>
@@ -79,6 +78,7 @@
 
     <div class="container">
     <div class="row" >
+
     {% block content %}
 
     {% endblock %}
@@ -132,6 +132,6 @@
     </div>
 </footer>
 
-<script src="../../static/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="{% static '/js/bootstrap.bundle.min.js' %}" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

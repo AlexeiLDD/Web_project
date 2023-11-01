@@ -7,7 +7,8 @@ from django.http import HttpResponse
 QUESTIONS = [
     {
         'id': i,
-        'title': f'question {i}'
+        'title': f'question {i}',
+        'text': f'This is a text for question {i}'
     } for i in range(10)
 ]
 
@@ -17,4 +18,4 @@ def index(request):
 
 def question(request, question_id):
     item = QUESTIONS[question_id]
-    return render(request, "question.html")
+    return render(request, "question.html", {'question': item})
