@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% block title %} index {% endblock %}
+
 {% block content %}
 
     <div class="col-md-9 ">
@@ -10,7 +12,7 @@
 
         {%  for question in questions %}
 
-            {% include 'Components/question-item.html' %}
+            {% include 'Components/question_item_index.html' %}
 
         {% endfor %}
 

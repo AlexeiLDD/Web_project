@@ -1,0 +1,12 @@
+{% extends './question-item.html' %}
+
+{% block activity %}
+
+<h3 class="h3 text-center ">{{ question.title }}</h3>
+<p class="mt-4">
+{{ question.text }}
+</p>
+
+{% include './teg_list.html' %}
+
+{% endblock %}

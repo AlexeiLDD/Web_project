@@ -5,104 +5,16 @@
     <div class="col-md-9">
         <h1 class="h1 text-center headers mt-5">&nbsp;Question page</h1>
 
-        <div class="border border-warning rounded p-3">
-             <div class="row">
+        {% include 'Components/question_item_question.html' %}
 
-                <div class="col-3 m-3 text-dark ">
-                    <img class="rounded w-100" src="../static/png/default-avatar.png" alt="Avatar">
-                    <button class="btn btn-outline-warning mt-3 w-100" type="submit">
-                        <span class="text-dark text-start">Vote</span>
-                        <span class="badge bg-warning rounded-pill text-end">14</span>
-                    </button>
-                </div>
-
-                <div class="col-8 mt-3">
-                    <h3 class="h3 text-center ">{{ question.title }}</h3>
-                    <p class="mt-4">
-                    {{ question.text }}
-                    </p>
-
-                    <ul class="list-group list-group-horizontal float-end mb-3 mrg-top-7">
-                        <a href="#" class="list-group-item list-group-item-secondary list-group-item-action">Ruby</a>
-                        <a href="#" class="list-group-item list-group-item-secondary list-group-item-action">Visual&nbsp;Studio</a>
-                        <a href="#" class="list-group-item list-group-item-secondary list-group-item-action">Microsoft</a>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
 
          <h3 class="h3 text-center headers mt-5">Answers</h3>
+        <hr/>
 
-        <div class="border border-warning rounded mb-5">
-            <div class="row">
+        {% for answer in answers %}
+            {% include 'Components/answer_item.html' %}
+        {% endfor %}
 
-                <div class="col-3 m-3 text-dark text-center position-relative">
-                    <img class="rounded w-75" src="../static/png/default-avatar.png" alt="Avatar" >
-                    <button class="btn btn-outline-warning mt-2 w-75" type="submit">
-                        <span class="text-dark text-start">Vote</span>
-                        <span class="badge bg-warning rounded-pill text-end">14</span>
-                    </button>
-                    <div class="d-flex">
-                    <ul class="list-group list-group mt-3 mb-3 w-75 mx-auto justify-content-center">
-                    <li class="list-group-item list-group-item-success">
-                        <input class="form-check-input list" type="checkbox" value="1" id="firstCheckbox" checked>
-                        <label class="form-check-label" for="firstCheckbox">Right answer</label>
-                    </li>
-                    </ul>
-                    </div>
-                </div>
-
-                <div class="col-8 mt-3 d-flex align-items-center">
-                    <p>
-                       VSC and irb are two quite different tools. Irb is a ruby REPL (Read-Evaluate-Print-Loop environment).
-                        VSC is an IDE (Integrated Development Environment).<br/>
-
-                        REPLs such as irb or pry are designed to be used interactively. When they determine that a statement or block is complete in the read phase,
-                        they evaluate it, immediately print the results, and iterate to the next read attempt.
-                        This is very useful for testing and learning, since it gives immediate feedback on syntactic errors, logic errors, or conceptual misunderstandings.
-                        It is not how you want to run a working program. Once you have the logic of your program correct, you don't want to drown the user by making them wade
-                        through the results of each and every calculation in a complex or repetitive task. Instead, working code uses explicit output statements
-                        (such as print, puts, p, pp in ruby) to specify when results are to be displayed.<br>
-
-                        IDEs such as VSC are for writing whole programs or modules. You can put VSC into a REPL mode using the debugging tools, but the default behavior is
-                        to facilitate construction, and possibly running, of your program or module. There is no automated display of the program state when you're not in debug mode, so
-                        if you want to see the results you need to use one of the output statements to explicitly control what to output and at what point in the logic. In your VSC code fragment,
-                        change even_or_odd(number) to puts even_or_odd(number).
-                    </p>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="border border-warning rounded mb-5">
-            <div class="row">
-
-                <div class="col-3 m-3 text-dark text-center">
-                    <img class="rounded w-75" src="../static/png/default-avatar.png" alt="Avatar" >
-                    <button class="btn btn-outline-warning mt-2 w-75" type="submit">
-                        <span class="text-dark text-start">Vote</span>
-                        <span class="badge bg-warning rounded-pill text-end">14</span>
-                    </button>
-                    <div class="d-flex">
-                    <ul class="list-group list-group mt-3 mb-3 w-75 mx-auto justify-content-center">
-                    <li class="list-group-item list-group-item-success">
-                        <input class="form-check-input list" type="checkbox" value="1" id="secondCheckbox">
-                        <label class="form-check-label" for="secondCheckbox">Right answer</label>
-                    </li>
-                    </ul>
-                    </div>
-                </div>
-
-                <div class="col-8 mt-3 d-flex align-items-center">
-                    <p>
-                       VSC and irb are two quite different tools. Irb is a ruby REPL (Read-Evaluate-Print-Loop environment).
-                        VSC is an IDE (Integrated Development Environment).
-                    </p>
-                </div>
-
-            </div>
-        </div>
 
          <nav>
           <ul class="pagination justify-content-center mt-5">
@@ -123,7 +35,7 @@
         </nav>
 
         <h3 class="h3 text-center headers mt-5">Your answer</h3>
-
+        <hr/>
         <div class="border border-warning rounded p-3">
             <form>
             <div class="mb-3">

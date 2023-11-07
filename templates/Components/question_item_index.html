@@ -1,0 +1,16 @@
+{% extends './question-item.html' %}
+
+{% block activity %}
+
+    <a href="{% url 'question' question_id=question.id %}" class="h4 text-center text-primary mt-5">{{ question.title }}</a>
+    <p class="mt-2">
+        {{ question.text }}
+    </p>
+    <button class="btn btn-warning mrg-top-7" type="submit">
+        <span class=" text-start">Answer</span>
+        <span class="badge bg-body-secondary text-dark rounded-pill text-end">10</span>
+    </button>
+
+    {% include './teg_list.html' %}
+
+{% endblock %}
