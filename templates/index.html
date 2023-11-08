@@ -10,30 +10,14 @@
 
         <h1 class="h1 text-center headers mt-5">New Questions</h1>
 
-        {%  for question in questions %}
+        {%  for question in items %}
 
             {% include 'Components/question_item_index.html' %}
 
         {% endfor %}
 
 
-    <nav>
-      <ul class="pagination justify-content-center mt-5">
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous">
-            <span aria-hidden="true">&laquo;</span>
-          </a>
-        </li>
-        <li class="page-item"><a class="page-link" href="#">1</a></li>
-        <li class="page-item"><a class="page-link" href="#">2</a></li>
-        <li class="page-item"><a class="page-link" href="#">3</a></li>
-        <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next">
-            <span aria-hidden="true">&raquo;</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
+    {% include 'Components/paginator.html' %}
 
     </div>
 

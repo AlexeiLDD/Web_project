@@ -1,5 +1,7 @@
 {% extends "layout/base.html" %}
 
+{% block title %} question {{ question.id }} {% endblock %}
+
 {% block content %}
 
     <div class="col-md-9">
@@ -11,28 +13,12 @@
          <h3 class="h3 text-center headers mt-5">Answers</h3>
         <hr/>
 
-        {% for answer in answers %}
+        {% for answer in items %}
             {% include 'Components/answer_item.html' %}
         {% endfor %}
 
 
-         <nav>
-          <ul class="pagination justify-content-center mt-5">
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Previous">
-                <span aria-hidden="true">&laquo;</span>
-              </a>
-            </li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item">
-              <a class="page-link" href="#" aria-label="Next">
-                <span aria-hidden="true">&raquo;</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
+        {% include 'Components/paginator.html' %}
 
         <h3 class="h3 text-center headers mt-5">Your answer</h3>
         <hr/>
