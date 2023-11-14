@@ -1,0 +1,59 @@
+{% extends 'layout/base.html' %}
+
+{% load static %}
+
+{% block title %} settings {% endblock %}
+
+{% block content %}
+
+    <div class="col-md-9 test">
+        <h1 class="h1 text-center headers mt-5">Settings</h1>
+
+        <div class="border border-warning rounded p-3 shadow-sm">
+
+            <div class="row">
+            <div class="col-3 text-end">
+                <div class="mb-5">Login:</div>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control mb-5" value="user1234" placeholder="Login" aria-label="Login" aria-describedby="basic-addon1">
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-3 text-end">
+                <div class="mb-5">Email:</div>
+            </div>
+            <div class="col">
+                <input type="email" class="form-control mb-5" value="user1234@mail.ru" placeholder="example@mail.ru" aria-label="Email" aria-describedby="basic-addon1">
+            </div>
+            </div>
+
+            <div class="row">
+            <div class="col-3 text-end">
+                <div class="mb-5">NickName:</div>
+            </div>
+            <div class="col">
+                <input type="text" class="form-control mb-5" value="UserPro" placeholder="NickName" aria-label="NickName" aria-describedby="basic-addon1">
+            </div>
+            </div>
+
+
+            <div class="row mb-5">
+            <div class="col-3 text-end">
+                <div>Upload Avatar:</div>
+            </div>
+            <div class="col">
+                 <img class="rounded w-100 mb-2" src="{% static '/png/default-avatar.png' %}" alt="Avatar" >
+               <input type="file" class="form-control" id="inputGroupFile01" placeholder="Не выбран">
+            </div>
+            </div>
+
+            <div class="row ms-5 me-5 text-center ">
+            <button type="button" class="btn btn-primary btn-block mb-1">Save</button>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

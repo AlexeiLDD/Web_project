@@ -8,7 +8,7 @@ QUESTIONS = [
         'id': i,
         'title': f'question {i}',
         'text': f'This is a text for question {i}'
-    } for i in range(100)
+    } for i in range(150)
 ]
 
 ANSWERS = [
@@ -32,13 +32,13 @@ def paginate(objects, page, per_page=10):
 
 # Create your views here.
 def index(request):
-    page, page_range = paginate(QUESTIONS, request.GET.get('page', 1), 10)
+    page, page_range = paginate(QUESTIONS, request.GET.get('page', 1))
     return render(request, "index.html", {'items': page, 'page_range': page_range})
 
 
 def question(request, question_id):
     item = QUESTIONS[question_id]
-    page, page_range = paginate(ANSWERS, request.GET.get('page', 1), 10)
+    page, page_range = paginate(ANSWERS, request.GET.get('page', 1))
     return render(request, "question.html", {'question': item, 'items': page, 'page_range': page_range})
 
 
@@ -48,6 +48,10 @@ def login(request):
 
 def signup(request):
     return render(request, 'signup.html')
+
+
+def settings(request):
+    return render(request, 'settings.html')
 
 
 def ask(request):
