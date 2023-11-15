@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'questionnaire.apps.QuestionnaireConfig',
+    'app'
 ]
 
 MIDDLEWARE = [

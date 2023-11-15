@@ -1,10 +1,12 @@
 {% extends './question-item.html' %}
 
+{% block rating %} {{ question.rating_count }} {% endblock %}
+
 {% block activity %}
 
-<h3 class="h3 text-center ">{{ question.title }}</h3>
+<h3 class="h3 text-center ">{{ question.head }}</h3>
 <p class="mt-4">
-{{ question.text }}
+{{ question.body }}
 </p>
 
 {% include './teg_list.html' %}

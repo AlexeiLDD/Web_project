@@ -8,7 +8,15 @@
 
     <div class="col-md-9 ">
 
-        <h1 class="h1 text-center headers mt-5">New Questions</h1>
+        {% if tag %}
+            <h1 class="h2  headers mt-5">Tag: {{ tag.tag_name }}</h1>
+        {% elif hot %}
+            <h1 class="h1 text-center headers mt-5">Hot Questions</h1>
+            <a href="{% url 'index' %}"><h6 class="h6 text-center text-dark-emphasis headers"> New Questions </h6></a>
+        {% else %}
+            <h1 class="h1 text-center headers mt-5">New Questions</h1>
+            <a href="{% url 'hot' %}"><h6 class="h6 text-center text-dark-emphasis headers"> Hot Questions </h6></a>
+        {% endif %}
 
         {%  for question in items %}
 

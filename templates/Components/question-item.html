@@ -8,7 +8,7 @@
             <img class="rounded w-100" src="{% static '/png/default-avatar.png' %}" alt="Avatar" >
             <button class="btn btn-outline-warning  mt-2" type="submit">
                 <span class="text-dark text-start">Vote</span>
-                <span class="badge bg-warning rounded-pill text-end">14</span>
+                <span class="badge bg-warning rounded-pill text-end">{% block rating %}{% endblock %}</span>
             </button>
             {% block right_answer %}
 
