@@ -7,10 +7,7 @@ from .models import Question, Answer, Tag, Profile, Rating
 
 def paginate(objects, page, per_page=10):
     paginator = Paginator(objects, per_page)
-    try:
-        p_page = paginator.page(page)
-    except django.core.paginator.EmptyPage:
-        p_page = paginator.page(1)
+    p_page = paginator.get_page(page)
     return [p_page, paginator.get_elided_page_range(number=p_page.number,
                                                     on_each_side=2,
                                                     on_ends=1)]

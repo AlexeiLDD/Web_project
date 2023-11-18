@@ -1,6 +1,5 @@
 
-
-def sections_processor(request):
+def authorized_processor(request):
     authorised_paths = {'/', '/ask'}
     is_authorized = False
     if request.get_full_path() in authorised_paths:
