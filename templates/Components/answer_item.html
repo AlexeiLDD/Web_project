@@ -6,9 +6,9 @@
 
 <div class="d-flex">
     <ul class="list-group list-group mt-3 mb-3 w-75 mx-auto justify-content-center">
-        <li class="list-group-item list-group-item-success">
-            <input class="form-check-input list" type="checkbox" value="1" id="firstCheckbox" {% if answer.correctness %}checked{% endif %}  style="pointer-events: none;">
-            <label class="form-check-label" for="firstCheckbox">Right</label>
+        <li class="list-group-item list-group-item-success" {% if not belonging %} style="pointer-events: none;" {% endif %}>
+            <input class="form-check-input list" type="checkbox" value="1" id="{{ forloop.counter }}Checkbox" {% if answer.correctness %}checked{% endif %} >
+            <label class="form-check-label" for="{{ forloop.counter }}Checkbox">Right</label>
         </li>
     </ul>
 </div>
@@ -17,7 +17,7 @@
 
 {% block activity %}
 
-<div class="col-8 mt-3 d-flex align-items-center">
+<div class="anchor col-8 mt-3 d-flex align-items-center" id='{{ answer.pk }}'>
     <p>
         {{ answer.body }}
     </p>

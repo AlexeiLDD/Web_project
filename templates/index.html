@@ -13,6 +13,8 @@
         {% elif hot %}
             <h1 class="h1 text-center headers mt-5">Hot Questions</h1>
             <a href="{% url 'index' %}"><h6 class="h6 text-center text-dark-emphasis headers"> New Questions </h6></a>
+        {% elif self %}
+            <h1 class="h1 text-center headers mt-5">My Questions</h1>
         {% else %}
             <h1 class="h1 text-center headers mt-5">New Questions</h1>
             <a href="{% url 'hot' %}"><h6 class="h6 text-center text-dark-emphasis headers"> Hot Questions </h6></a>

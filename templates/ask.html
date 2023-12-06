@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
 {% block title %} ask {% endblock %}
 
 {% block content %}
@@ -9,24 +13,34 @@
     <div class="col-md-9">
         <h1 class="h1 text-center headers mt-5">New question</h1>
 
-        <div class="border border-warning rounded p-3">
-            <form>
-            <div class="mb-3">
-                <label for="questionTitle" class="form-label">Title<span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="questionTitle" placeholder="title">
+         {% for err in form.non_field_errors %}
+        <div class="border border-2 border-danger rounded p-3 mb-3">
+            <strong>{{ err }}</strong>
+        </div>
+        {% endfor %}
+
+        <div class="border border-warning rounded p-3 shadow-sm mb-5">
+
+            <form method="post" >
+
+                {% csrf_token %}
+
+                <fieldset>
+                    {% for field in form %}
+                        <div class="row control-group {% if field.errors %}has-error{% endif %}">
+                        <div class="col controls">
+                            {% bootstrap_field field show_help=True %}
+                        </div>
+                        </div>
+                    {% endfor %}
+                </fieldset>
+
+            <div class="row ms-5 me-5 text-center">
+                 <input type="submit" class="btn btn-primary btn-block " value="Ask!"/>
             </div>
-            <div class="mb-3">
-                <label for="questionBody" class="form-label">Text<span class="text-danger">*</span></label>
-                <textarea class="form-control" id="questionBody" rows="10"></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="questionTags" class="form-label">Title</label>
-                <input type="text" class="form-control" id="questionTags" placeholder="tag1, tag2, tag3...">
-            </div>
-             <div class="mb-3">
-                <input type="submit" class="form-control btn btn-warning"  value="Ask!">
-            </div>
+
             </form>
+
         </div>
     </div>
 

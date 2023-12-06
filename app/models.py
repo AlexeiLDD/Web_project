@@ -11,10 +11,15 @@ class QuestionManager(models.Manager):
         return self.order_by('date').reverse()
 
     def hot_questions(self):
-        return self.alias(c_rating=Count('rating')).filter(c_rating__gt=95).order_by('-c_rating')
+        return self.alias(c_rating=Count('rating')).order_by('-c_rating')
 
     def tag_questions(self, tag_id):
         return self.prefetch_related('tags').filter(tags__id=tag_id)
+
+    def self_questions(self, request):
+        user = request.user
+        profile = Profile.objects.get(user=user)
+        return self.filter(author=profile)
 
 
 class Question(models.Model):
@@ -45,7 +50,11 @@ class AnswerManager(models.Manager):
         return self.filter(question=question_id).all()
 
     def right_question_answers(self, question_id):
-        return self.question_answers(question_id).order_by('correctness').reverse()
+        return self.question_answers(question_id).order_by('correctness', 'date').reverse()
+
+    def last_right_question_answers(self, question_id):
+        return (self.question_answers(question_id).
+                order_by('correctness', 'date').reverse().filter(correctness=True).last())
 
 
 class Answer(models.Model):

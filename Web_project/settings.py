@@ -36,6 +36,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'questionnaire.apps.QuestionnaireConfig',
+    "django_bootstrap5",
     'app'
 ]
 
@@ -59,7 +60,7 @@ TEMPLATES = [
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
-                'app.context_processors.authorized_processor',
+                'app.context_processors.request_processor',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',

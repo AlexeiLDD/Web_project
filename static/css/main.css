@@ -21,3 +21,8 @@ main > .container {
 .mrg-top-7 {
     margin-top: 7%;
 }
+
+.anchor {
+  position: absolute;
+  transform: translateY(-50vh);
+}

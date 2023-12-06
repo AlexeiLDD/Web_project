@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% load django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
 {% block title %} signup {% endblock %}
 
 {% block content %}
@@ -9,69 +13,33 @@
     <div class="col-md-9 test">
         <h1 class="h1 text-center headers mt-5">Registration</h1>
 
+       {% for err in form.non_field_errors %}
         <div class="border border-2 border-danger rounded p-3 mb-3">
-            <strong>Sorry, this email address already registered!</strong>
+            <strong>{{ err }}</strong>
         </div>
+        {% endfor %}
 
-        <div class="border border-warning rounded p-3 shadow-sm">
+        <div class="border border-warning rounded p-3 shadow-sm mb-5">
 
-            <div class="row">
-            <div class="col-3 text-end">
-                <div class="mb-5">Login:</div>
-            </div>
-            <div class="col">
-                <input type="text" class="form-control mb-5" placeholder="Login" aria-label="Login" aria-describedby="basic-addon1">
-            </div>
-            </div>
+            <form method="post" >
 
-            <div class="row">
-            <div class="col-3 text-end">
-                <div class="mb-5">Email:</div>
-            </div>
-            <div class="col">
-                <input type="email" class="form-control mb-5" placeholder="example@mail.ru" aria-label="Email" aria-describedby="basic-addon1">
-            </div>
-            </div>
+                {% csrf_token %}
 
-            <div class="row">
-            <div class="col-3 text-end">
-                <div class="mb-5">NickName:</div>
-            </div>
-            <div class="col">
-                <input type="text" class="form-control mb-5" placeholder="NickName" aria-label="NickName" aria-describedby="basic-addon1">
-            </div>
-            </div>
-
-            <div class="row">
-            <div class="col-3 text-end">
-                <div class="mb-5">Password:</div>
-            </div>
-            <div class="col">
-                <input type="password" class="form-control mb-5" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
-            </div>
-            </div>
-
-            <div class="row">
-            <div class="col-3 text-end">
-                <div class="mb-5">Repeat Password:</div>
-            </div>
-            <div class="col">
-                <input type="password" class="form-control mb-5" placeholder="Password" aria-label="RepeatPassword" aria-describedby="basic-addon1">
-            </div>
-            </div>
-
-            <div class="row">
-            <div class="col-3 text-end">
-                <div class="mb-5">Upload Avatar:</div>
-            </div>
-            <div class="col">
-               <input type="file" class="form-control" id="inputGroupFile01" placeholder="Не выбран">
-            </div>
-            </div>
+                <fieldset>
+                    {% for field in form %}
+                        <div class="row control-group {% if field.errors %}has-error{% endif %}">
+                        <div class="col controls">
+                            {% bootstrap_field field show_help=True %}
+                        </div>
+                        </div>
+                    {% endfor %}
+                </fieldset>
 
             <div class="row ms-5 me-5 text-center ">
-            <button type="button" class="btn btn-primary btn-block mb-1">Register</button>
+                 <input type="submit" class="btn btn-primary btn-block" value="Register"/>
             </div>
+
+            </form>
 
         </div>
     </div>

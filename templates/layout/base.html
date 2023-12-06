@@ -1,6 +1,6 @@
 {% load static %}
 
-<!--<!doctype html>-->
+{% load i18n %}
 
 <html lang="ru" class="h-100" data-bs-theme="auto">
 
@@ -42,32 +42,30 @@
 
         <div class="col-3 text-end">
 
-            {% if is_authorized %}
+            {% if request.user.is_authenticated %}
 
             <div class="btn-group dropdown">
                 <button class="btn btn-dark text-light dropdown-toggle m-2" data-bs-toggle="dropdown" aria-expanded="false">
-                    Name
+                    {{ request.user.first_name }}
                 </button>
                 <img src="{% static '/jpeg/ava-vk-cats-90.jpg' %}" alt="mdo" width="50" height="50" class="rounded-3">
                 <ul class="dropdown-menu" data-bs-theme="dark" style="">
-                    <li><a class="dropdown-item " href="#">My questions</a></li>
+                    <li><a class="dropdown-item " href="{% url 'self_questions' %}">My questions</a></li>
                     <li><a class="dropdown-item" href="{% url 'ask' %}">New question</a></li>
                     <li><a class="dropdown-item" href="{% url 'settings' %}">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="{% url 'settings' %}">Profile</a></li>
                     <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
                 </ul>
             </div>
 
             {% else %}
 
             <div>
-                <a href="{% url 'login' %}">
-                <button type="button" class="btn btn-outline-warning me-2">Login</button>
-                </a>
-                <a href="{% url 'signup' %}">
-                <button type="button" class="btn btn-warning">Sign-up</button>
-                </a>
+                <a href="{% url 'login' %}?continue={{ request.path }}?{{ request.GET.urlencode }}">
+                <button type="button" class="btn btn-outline-warning me-2">Login</button></a>
+                <a href="{% url 'signup' %}?continue={{ request.path }}?{{ request.GET.urlencode }}">
+                <button type="button" class="btn btn-warning">Sign-up</button></a>
             </div>
 
             {% endif %}
@@ -137,7 +135,7 @@
         <span class="text-body-secondary">COPYRIGHT © 2023, ALL RIGHTS RESERVED.</span>
     </div>
 </footer>
-
+<script src="{% static 'js/main.js' %}"></script>
 <script src="{% static '/js/bootstrap.bundle.min.js' %}" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
