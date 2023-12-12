@@ -48,7 +48,7 @@
                 <button class="btn btn-dark text-light dropdown-toggle m-2" data-bs-toggle="dropdown" aria-expanded="false">
                     {{ request.user.first_name }}
                 </button>
-                <img src="{% static '/jpeg/ava-vk-cats-90.jpg' %}" alt="mdo" width="50" height="50" class="rounded-3">
+                <img src="{{ request.user.profile.avatar.url }}" alt="mdo" width="50" height="50" class="rounded-3">
                 <ul class="dropdown-menu" data-bs-theme="dark" style="">
                     <li><a class="dropdown-item " href="{% url 'self_questions' %}">My questions</a></li>
                     <li><a class="dropdown-item" href="{% url 'ask' %}">New question</a></li>

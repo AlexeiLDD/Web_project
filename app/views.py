@@ -112,7 +112,7 @@ def signup(request):
     if request.method == 'GET':
         register_form = RegisterForm()
     if request.method == 'POST':
-        register_form = RegisterForm(request.POST)
+        register_form = RegisterForm(request.POST, request.FILES)
         if register_form.is_valid():
             try:
                 user = register_form.save()
@@ -129,7 +129,7 @@ def settings(request):
     if request.method == 'GET':
         edit_profile_form = EditProfileForm(instance=request.user)
     if request.method == 'POST':
-        edit_profile_form = EditProfileForm(request.POST, instance=request.user)
+        edit_profile_form = EditProfileForm(request.POST, request.FILES, instance=request.user)
         if edit_profile_form.is_valid():
             user = edit_profile_form.save()
             messages.success(request, 'Your profile is updated successfully')

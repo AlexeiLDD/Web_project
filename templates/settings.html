@@ -29,7 +29,7 @@
 
         <div class="border border-warning rounded p-3 shadow-sm mb-5">
 
-            <form method="post" >
+            <form method="post" enctype="multipart/form-data">
 
                 {% csrf_token %}
 
@@ -42,6 +42,10 @@
                         </div>
                     {% endfor %}
                 </fieldset>
+
+            <div>
+                <img class="rounded w-75 mx-auto d-block mb-4 mt-2 " src="{{ request.user.profile.avatar.url }}" alt="Avatar" >
+            </div>
 
             <div class="row ms-5 me-5 text-center ">
                  <input type="submit" class="btn btn-primary btn-block" value="Save"/>
