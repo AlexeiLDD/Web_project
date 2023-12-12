@@ -55,15 +55,10 @@ def tag(request, tag_id):
     return render(request, "index.html", {'items': page, 'page_range': page_range, 'tag': tag_item})
 
 
+@csrf_protect
 def question(request, question_id):
     item = get_object_or_404(Question.objects.all(), id=question_id)
     user = request.user
-
-    if user.is_authenticated:
-        profile = Profile.objects.get(user=user)
-        belonging = True if item.author == profile else False
-    else:
-        belonging = False
 
     if request.method == 'GET':
         new_answer_form = NewAnswerForm()
@@ -74,6 +69,12 @@ def question(request, question_id):
             anchor_answer = Answer.objects.last_right_question_answers(item.id)
             anchor = 'question' if anchor_answer is None else str(anchor_answer.id)
             return redirect(reverse('question', args=[question_id])+'#'+anchor)
+
+    if user.is_authenticated:
+        profile = Profile.objects.get(user=user)
+        belonging = True if item.author == profile else False
+    else:
+        belonging = False
 
     page, page_range = paginate(Answer.objects.right_question_answers(item.id), request.GET.get('page', 1))
     return render(request, "question.html",
