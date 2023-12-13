@@ -6,10 +6,9 @@
     <div class="row">
         <div class="col-2 m-3 d-grid gap-2 justify-content-center text-dark ">
             <img class="rounded w-100" {% block img %}{% endblock %} alt="Avatar" >
-            <button class="btn btn-outline-warning  mt-2" type="submit">
-                <span class="text-dark text-start">Vote</span>
-                <span class="badge bg-warning rounded-pill text-end">{% block rating %}{% endblock %}</span>
-            </button>
+            {% block button %}
+
+            {% endblock %}
             {% block right_answer %}
 
             {% endblock %}

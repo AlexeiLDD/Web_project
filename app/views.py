@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.db import IntegrityError
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
-from django.http import HttpResponseRedirect
+from django.http import JsonResponse
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_protect
 
@@ -146,3 +146,34 @@ def ask(request):
             new_question = new_question_form.save(request)
             return redirect(reverse('question', args=[new_question.id]))
     return render(request, 'ask.html', {'form': new_question_form})
+
+
+@csrf_protect
+@login_required(login_url='login', redirect_field_name='continue')
+def vote(request):
+    id_ = request.POST.get('id')
+    type_ = request.POST.get('type')
+    if type_ == "question":
+        item = get_object_or_404(Question.objects.all(), id=id_)
+    else:
+        item = get_object_or_404(Answer.objects.all(), id=id_)
+    item.toggle_rating(request.user.profile.id)
+    count = item.rating_count()
+    return JsonResponse({'count': count})
+
+
+@csrf_protect
+def correctness(request):
+    answer_id = request.POST.get('answer_id')
+    question_id = request.POST.get('question_id')
+    answer = get_object_or_404(Answer.objects.all(), id=answer_id)
+    question_ = get_object_or_404(Question.objects.all(), id=question_id)
+    if question_.author_id == request.user.profile.id:
+        if answer.correctness:
+            answer.correctness = False
+        else:
+            answer.correctness = True
+        answer.save()
+        return JsonResponse({'success': 1})
+    else:
+        return JsonResponse({'success': 2})

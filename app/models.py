@@ -36,6 +36,21 @@ class Question(models.Model):
     def rating_count(self):
         return self.rating.count()
 
+    def toggle_rating(self, profile_id):
+        rating = self.rating.filter(profile_id=profile_id).first()
+        if rating:
+            rating.delete()
+        else:
+            rat = Rating.objects.create(profile_id=profile_id)
+            self.rating.add(rat)
+
+    def check_rating(self):
+        profiles = []
+        ratings = self.rating.all()
+        for rating in ratings:
+            profiles.append(rating.profile_id)
+        return profiles
+
     def answers_count(self):
         return Answer.objects.one_question_answers_count(self.id)
 
@@ -67,6 +82,21 @@ class Answer(models.Model):
 
     def rating_count(self):
         return self.rating.count()
+
+    def toggle_rating(self, profile_id):
+        rating = self.rating.filter(profile_id=profile_id).first()
+        if rating:
+            rating.delete()
+        else:
+            rat = Rating.objects.create(profile_id=profile_id)
+            self.rating.add(rat)
+
+    def check_rating(self):
+        profiles = []
+        ratings = self.rating.all()
+        for rating in ratings:
+            profiles.append(rating.profile_id)
+        return profiles
 
     objects = AnswerManager()
 
