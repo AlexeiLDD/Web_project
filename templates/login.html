@@ -1,4 +1,5 @@
 {% extends 'layout/base.html' %}
+{% load i18n %}
 
 {% load static %}
 
@@ -11,7 +12,7 @@
 {% block content %}
 
     <div class="col-md-9 test">
-        <h1 class="h1 text-center headers mt-5">Log In</h1>
+        <h1 class="h1 text-center headers mt-5">{% trans 'Log In' %}</h1>
 
         {% for err in form.non_field_errors %}
         <div class="border border-2 border-danger rounded p-3 mb-3">
@@ -35,9 +36,9 @@
                 </fieldset>
 
                 <div class="row ms-5 me-5 text-center ">
-                    <input type="submit" class="btn btn-primary btn-block mb-4" value="Log in"/>
+                    <input type="submit" class="btn btn-primary btn-block mb-4" value="{% trans 'Log in' %}"/>
 
-                <p>Not a member? <a href="{% url 'signup' %}">Register</a></p>
+                <p>{% trans 'Not a member?' %}<a href="{% url 'signup' %}">{% trans 'Register' %}</a></p>
                 </div>
 
             </form>

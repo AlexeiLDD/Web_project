@@ -1,16 +1,17 @@
 {% extends './question-item.html' %}
+{% load i18n %}
 
 {% block img %}src="{{ question.author.avatar.url }}" title="{{ question.author.user.first_name }}"{% endblock %}
 
 {% block button %}
     {% if request.user.profile.id in question.check_rating%}
     <button  class="btn btn-success text-light mt-2 vote voted" data-id="{{ question.id }}" data-type="question" type="submit">
-        <span class="text-start">Voted</span>
+        <span class="text-start">{% trans 'Voted' %}</span>
         <span class="badge bg-gradient rounded-pill text-end counter">{{ question.rating_count }}</span>
     </button>
     {% else %}
     <button   class="btn btn-outline-warning mt-2 vote unvoted" data-id="{{ question.id }}" data-type="question" type="submit">
-        <span class="text-dark text-start">Vote</span>
+        <span class="text-dark text-start">{% trans 'Voted' %}</span>
         <span class="badge bg-warning rounded-pill text-end counter">{{ question.rating_count }}</span>
     </button>
     {% endif %}
