@@ -92,7 +92,7 @@ def login_view(request):
             user = authenticate(request, **login_form.cleaned_data)
             if user is not None:
                 login(request, user)
-                return redirect(request.GET.get('continue', ''))
+                return redirect(request.GET.get('continue', '/'))
             else:
                 login_form.add_error(None, 'Wrong Login or Password!')
                 login_form.add_error('username', '')
@@ -116,7 +116,7 @@ def signup(request):
             try:
                 user = register_form.save()
                 login(request, user)
-                return redirect(request.GET.get('continue', ''))
+                return redirect(request.GET.get('continue', '/'))
             except IntegrityError:
                 register_form.add_error(None, 'This User already exists!')
     return render(request, 'signup.html', {'form': register_form})

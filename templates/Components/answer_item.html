@@ -6,7 +6,7 @@
 {% block button %}
     {% if request.user.profile.id in answer.check_rating%}
     <button  class="btn btn-success text-light mt-2 vote voted" data-id="{{ answer.id }}" data-type="answer" type="submit">
-        <span class="text-start">{% trans 'Voted' %}</span>
+        <span class="text-start">{% trans 'Vote' %}</span>
         <span class="badge bg-gradient rounded-pill text-end counter">{{ answer.rating_count }}</span>
     </button>
     {% else %}

@@ -40,13 +40,11 @@ for ( let button of buttons ) {
                     button.classList.replace('voted','vote');
                     button.classList.replace('btn-success','btn-outline-warning');
                     vote.classList.add('text-dark');
-                    vote.innerHTML = 'Vote';
                     counter.classList.replace('bg-gradient', 'bg-warning');
                 } else {
                     button.classList.replace('vote', 'voted');
                     button.classList.replace('btn-outline-warning', 'btn-success');
                     vote.classList.remove('text-dark');
-                    vote.innerHTML = 'Voted';
                     counter.classList.replace('bg-warning', 'bg-gradient');
                 }
             })

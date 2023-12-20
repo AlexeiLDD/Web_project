@@ -63,7 +63,7 @@
 
             <div>
                 <a href="{% url 'login' %}?continue={{ request.path }}?{{ request.GET.urlencode }}">
-                <button type="button" class="btn btn-outline-warning me-2">{% trans 'Login' %}</button></a>
+                <button type="button" class="btn btn-outline-warning me-2">{% trans 'Log in' %}</button></a>
                 <a href="{% url 'signup' %}?continue={{ request.path }}?{{ request.GET.urlencode }}">
                 <button type="button" class="btn btn-warning">{% trans 'Sign-up' %}</button></a>
             </div>

@@ -1,26 +1,26 @@
 import re
 from django import forms
 from django.contrib.auth.models import User
-from django.utils.translation import gettext_lazy as gtx
+from django.utils.translation import gettext as _
 
 from app.models import Profile, Question, Tag, Answer, Rating
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(label=gtx('Login'))
-    password = forms.CharField(min_length=5, widget=forms.PasswordInput)
+    username = forms.CharField(label=_('Login'))
+    password = forms.CharField(label=_('Password'),min_length=5, widget=forms.PasswordInput)
 
 
 class RegisterForm(forms.ModelForm):
-    username = forms.CharField(label=gtx('Login'),
-                               help_text=gtx('Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.'))
-    password = forms.CharField(min_length=5,
+    username = forms.CharField(label=_('Login'),
+                               help_text=_('Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only.'))
+    password = forms.CharField(label=_('Password'), min_length=5,
                                widget=forms.PasswordInput,
-                               help_text=gtx('Required. Minimum 5 characters. Minimum 1 character from @/./+/-/_/&/* '))
-    first_name = forms.CharField(label=gtx('Nick Name'), help_text=gtx('Required.'))
-    email = forms.EmailField(label=gtx('Email Address'), help_text=gtx('Required.'))
-    repeat_password = forms.CharField(min_length=5, widget=forms.PasswordInput, help_text=gtx('Required.'))
-    avatar = forms.ImageField(label=gtx('Avatar'), required=False)
+                               help_text=_('Required. Minimum 5 characters. Minimum 1 character from @/./+/-/_/&/* '))
+    first_name = forms.CharField(label=_('Nick Name'), help_text=_('Required.'))
+    email = forms.EmailField(label=_('Email Address'), help_text=_('Required.'))
+    repeat_password = forms.CharField(min_length=5, widget=forms.PasswordInput, help_text=_('Required.'))
+    avatar = forms.ImageField(label=_('Avatar'), required=False)
 
     class Meta:
         model = User
@@ -33,13 +33,13 @@ class RegisterForm(forms.ModelForm):
         for i in password:
             if i in char_set:
                 return password
-        raise forms.ValidationError(gtx('Password must contain @/./+/-/_/&/*'))
+        raise forms.ValidationError(_('Password must contain @/./+/-/_/&/*'))
 
     def clean_username(self):
         username = self.cleaned_data.get('username')
         if len(username) < 30 and re.fullmatch(r'(\d|\w|@|\.|\+|-)*', username):
             return username
-        raise forms.ValidationError(gtx('Login does not meet the requirements'))
+        raise forms.ValidationError(_('Login does not meet the requirements'))
 
     def clean(self):
         password = self.cleaned_data.get('password')
@@ -48,7 +48,7 @@ class RegisterForm(forms.ModelForm):
         if password != password2:
             self.add_error('password', '')
             self.add_error('repeat_password', '')
-            raise forms.ValidationError(gtx('Passwords do not match!'))
+            raise forms.ValidationError(_('Passwords do not match!'))
 
     def save(self, **kwargs):
         self.cleaned_data.pop('repeat_password')
@@ -67,14 +67,14 @@ class RegisterForm(forms.ModelForm):
 
 
 class EditProfileForm(forms.ModelForm):
-    username = forms.CharField(label=gtx('Login'),
+    username = forms.CharField(label=_('Login'),
                                required=True,
                                widget=forms.TextInput(attrs={'class': 'form-control'}),
-                               help_text=gtx('30 characters or fewer. Letters, digits and @/./+/-/_ only.'))
+                               help_text=_('30 characters or fewer. Letters, digits and @/./+/-/_ only.'))
     email = forms.EmailField(required=True,
                              widget=forms.TextInput(attrs={'class': 'form-control'}))
-    first_name = forms.CharField(label=gtx('Nick Name'), help_text=gtx('Required.'))
-    avatar = forms.ImageField(label=gtx('Avatar'), required=False)
+    first_name = forms.CharField(label=_('Nick Name'), help_text=_('Required.'))
+    avatar = forms.ImageField(label=_('Avatar'), required=False)
 
     class Meta:
         model = User
@@ -84,7 +84,7 @@ class EditProfileForm(forms.ModelForm):
         username = self.cleaned_data.get('username')
         if len(username) < 30 and re.fullmatch(r'(\d|\w|@|\.|\+|-)*', username):
             return username
-        raise forms.ValidationError(gtx('Login does not meet the requirements'))
+        raise forms.ValidationError(_('Login does not meet the requirements'))
 
     def save(self, **kwargs):
         user = super().save(**kwargs)
@@ -97,15 +97,15 @@ class EditProfileForm(forms.ModelForm):
 
 
 class NewQuestionForm(forms.ModelForm):
-    head = forms.CharField(label=gtx('Title'), min_length=10,
+    head = forms.CharField(label=_('Title'), min_length=10,
                            widget=forms.TextInput(attrs={'class': 'form-control'}),
-                           help_text=gtx('Required. Minimum 10 characters.'))
-    body = forms.CharField(label=gtx('Text'), min_length=40,
+                           help_text=_('Required. Minimum 10 characters.'))
+    body = forms.CharField(label=_('Text'), min_length=40,
                            widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 10}),
-                           help_text=gtx('Required. Minimum 40 characters.'))
-    tags = forms.CharField(label=gtx('Tags'),  required=False,
+                           help_text=_('Required. Minimum 40 characters.'))
+    tags = forms.CharField(label=_('Tags'),  required=False,
                            widget=forms.TextInput(attrs={'class': 'form-control'}),
-                           help_text=gtx('Letters and digits only. Enter a comma-separated list of tags.'))
+                           help_text=_('Letters and digits only. Enter a comma-separated list of tags.'))
 
     class Meta:
         model = Question
@@ -115,7 +115,7 @@ class NewQuestionForm(forms.ModelForm):
         tags = self.cleaned_data.get('tags')
         if re.fullmatch(r'(\d|\w|,|\s)*', tags):
             return tags
-        raise forms.ValidationError(gtx('List of tags does not meet the requirements'))
+        raise forms.ValidationError(_('List of tags does not meet the requirements'))
 
     def tags_list(self):
         tags_rec = self.cleaned_data.get('tags')
@@ -140,7 +140,7 @@ class NewQuestionForm(forms.ModelForm):
 
 
 class NewAnswerForm(forms.ModelForm):
-    body = forms.CharField(label=gtx('Write your answer here!'), min_length=2,
+    body = forms.CharField(label=_('Write your answer here!'), min_length=2,
                            widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 10}))
 
     class Meta:
