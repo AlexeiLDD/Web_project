@@ -1,0 +1,104 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-12-16 11:03+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || "
+"(n%100>=11 && n%100<=14)? 2 : 3);\n"
+
+#: app/forms.py:10 app/forms.py:15 app/forms.py:70
+msgid "Login"
+msgstr "Логин"
+
+#: app/forms.py:11 app/forms.py:17
+msgid "Password"
+msgstr "Пароль"
+
+#: app/forms.py:16
+msgid "Required. 30 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Обязательно. Не более 30 симаолов. Допстимы только буквы, цифры и символы "
+"@/./+/-/_ only."
+
+#: app/forms.py:19
+msgid "Required. Minimum 5 characters. Minimum 1 character from @/./+/-/_/&/* "
+msgstr "Обязательно. Минимум 5 символов. Минимум 1 символ из @/./+/-/_/&/*"
+
+#: app/forms.py:20 app/forms.py:76
+msgid "Nick Name"
+msgstr "Псевдоним"
+
+#: app/forms.py:20 app/forms.py:21 app/forms.py:22 app/forms.py:76
+msgid "Required."
+msgstr "Обязательно."
+
+#: app/forms.py:21
+msgid "Email Address"
+msgstr "Email Адресс"
+
+#: app/forms.py:23 app/forms.py:77
+msgid "Avatar"
+msgstr "Аватарка"
+
+#: app/forms.py:36
+msgid "Password must contain @/./+/-/_/&/*"
+msgstr "Пароль должен содержать символы @/./+/-/_/&/*"
+
+#: app/forms.py:42 app/forms.py:87
+msgid "Login does not meet the requirements"
+msgstr "Логин не соответствует требованиям"
+
+#: app/forms.py:51
+msgid "Passwords do not match!"
+msgstr "Пароли не совпадают!"
+
+#: app/forms.py:73
+msgid "30 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+"Не более 30 симаолов. Допстимы только буквы, цифры и символы @/./+/-/_ only."
+
+#: app/forms.py:100
+msgid "Title"
+msgstr "Заголовок"
+
+#: app/forms.py:102
+msgid "Required. Minimum 10 characters."
+msgstr "Обязательно. Минимум 10 символов."
+
+#: app/forms.py:103
+msgid "Text"
+msgstr "Текст"
+
+#: app/forms.py:105
+msgid "Required. Minimum 40 characters."
+msgstr "Обязательно. Минимум 40 символов."
+
+#: app/forms.py:106
+msgid "Tags"
+msgstr "Теги"
+
+#: app/forms.py:108
+msgid "Letters and digits only. Enter a comma-separated list of tags."
+msgstr "Только буквы и цифры. Введите список тегов через запятую."
+
+#: app/forms.py:118
+msgid "List of tags does not meet the requirements"
+msgstr "Список тегов не соответствует требованиям"
+
+#: app/forms.py:143
+msgid "Write your answer here!"
+msgstr "Напишите свой ответ здесь!"
