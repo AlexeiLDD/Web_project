@@ -34,6 +34,7 @@ urlpatterns = [
     path('profile/edit', views.settings, name='settings'),
     path('vote', views.vote, name='vote'),
     path('correctness', views.correctness, name='correctness'),
+    path('search', views.search, name='search'),
     path('admin/', admin.site.urls),
 ]
 

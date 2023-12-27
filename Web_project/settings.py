@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'questionnaire.apps.QuestionnaireConfig',
     "django_bootstrap5",
+    "django.contrib.postgres",
     'app'
 ]
 

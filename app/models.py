@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.db.models import Count
+from django.contrib.postgres.search import SearchVector
 
 # Create your models here.
 User = get_user_model()
@@ -20,6 +21,12 @@ class QuestionManager(models.Manager):
         user = request.user
         profile = Profile.objects.get(user=user)
         return self.filter(author=profile)
+
+    def search_questions(self, query):
+         #return self.filter(head__search=query)
+        return self.annotate(
+            search=SearchVector("body", "head")
+        ).filter(search=query)
 
 
 class Question(models.Model):

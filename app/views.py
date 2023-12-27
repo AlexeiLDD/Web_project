@@ -180,3 +180,12 @@ def correctness(request):
         return JsonResponse({'success': 1})
     else:
         return JsonResponse({'success': 2})
+
+
+def search(request):
+    if request.method == 'POST':
+        query = request.POST.get('search')
+        print(query)
+        page, page_range = paginate(Question.objects.search_questions(query), request.GET.get('page', 1))
+        return render(request, "index.html", {'items': page, 'page_range': page_range})
+
