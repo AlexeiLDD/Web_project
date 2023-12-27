@@ -35,11 +35,13 @@ def anonymous_required(function=None, redirect_field_name=REDIRECT_FIELD_NAME, l
 # Create your views here.
 def index(request):
     page, page_range = paginate(Question.objects.new_questions(), request.GET.get('page', 1))
+    print('index')
     return render(request, "index.html", {'items': page, 'page_range': page_range})
 
 
 def hot(request):
     page, page_range = paginate(Question.objects.hot_questions(), request.GET.get('page', 1))
+    print('hot')
     return render(request, "index.html", {'items': page, 'page_range': page_range, 'hot': True})
 
 
@@ -52,10 +54,11 @@ def self_questions(request):
 def tag(request, tag_id):
     tag_item = get_object_or_404(Tag.objects.all(), id=tag_id)
     page, page_range = paginate(Question.objects.tag_questions(tag_id), request.GET.get('page', 1))
+    print(tag)
     return render(request, "index.html", {'items': page, 'page_range': page_range, 'tag': tag_item})
 
 
-@csrf_protect
+# @csrf_protect
 def question(request, question_id):
     item = get_object_or_404(Question.objects.all(), id=question_id)
     user = request.user
@@ -82,7 +85,7 @@ def question(request, question_id):
                    'page_range': page_range, 'form': new_answer_form})
 
 
-@csrf_protect
+# @csrf_protect
 @anonymous_required(login_url='index', redirect_field_name='continue')
 def login_view(request):
     if request.method == 'GET':
@@ -106,7 +109,7 @@ def logout_view(request):
     return redirect(request.META.get('HTTP_REFERER'))
 
 
-@csrf_protect
+# @csrf_protect
 @anonymous_required(login_url='index', redirect_field_name='continue')
 def signup(request):
     if request.method == 'GET':
@@ -123,7 +126,7 @@ def signup(request):
     return render(request, 'signup.html', {'form': register_form})
 
 
-@csrf_protect
+# @csrf_protect
 @login_required(login_url='login', redirect_field_name='continue')
 def settings(request):
     if request.method == 'GET':
@@ -148,7 +151,7 @@ def ask(request):
     return render(request, 'ask.html', {'form': new_question_form})
 
 
-@csrf_protect
+# @csrf_protect
 @login_required(login_url='login', redirect_field_name='continue')
 def vote(request):
     id_ = request.POST.get('id')
@@ -162,7 +165,7 @@ def vote(request):
     return JsonResponse({'count': count})
 
 
-@csrf_protect
+# @csrf_protect
 def correctness(request):
     answer_id = request.POST.get('answer_id')
     question_id = request.POST.get('question_id')

@@ -1,0 +1,262 @@
+--------------------------------------------------------------------------------gunicorn_static------------------------------------------------------------------------------
+
+alexeyldd@fedora:~$ ab -n 500 -c 10  http://127.0.0.1:8000/static/jpeg/Untitled_logo_2_free-file.jpg
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Finished 500 requests
+
+
+Server Software:        gunicorn
+Server Hostname:        127.0.0.1
+Server Port:            8000
+
+Document Path:          /static/jpeg/Untitled_logo_2_free-file.jpg
+Document Length:        3835 bytes
+
+Concurrency Level:      10
+Time taken for tests:   1.275 seconds
+Complete requests:      500
+Failed requests:        0
+Non-2xx responses:      500
+Total transferred:      2062000 bytes
+HTML transferred:       1917500 bytes
+Requests per second:    392.08 [#/sec] (mean)
+Time per request:       25.505 [ms] (mean)
+Time per request:       2.551 [ms] (mean, across all concurrent requests)
+Transfer rate:          1579.03 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:     4   25   3.2     26      31
+Waiting:        4   25   3.2     26      30
+Total:          5   25   3.2     26      31
+
+Percentage of the requests served within a certain time (ms)
+  50%     26
+  66%     27
+  75%     27
+  80%     28
+  90%     28
+  95%     29
+  98%     29
+  99%     30
+ 100%     31 (longest request)
+ 
+-------------------------------------------------------------------------------nginx_static----------------------------------------------------------------------------------
+
+alexeyldd@fedora:~$ ab -n 500 -c 10  http://127.0.0.1:8080/static/jpeg/Untitled_logo_2_free-file.jpg
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Finished 500 requests
+
+
+Server Software:        nginx/1.24.0
+Server Hostname:        127.0.0.1
+Server Port:            8080
+
+Document Path:          /static/jpeg/Untitled_logo_2_free-file.jpg
+Document Length:        5521 bytes
+
+Concurrency Level:      10
+Time taken for tests:   0.047 seconds
+Complete requests:      500
+Failed requests:        0
+Total transferred:      2878500 bytes
+HTML transferred:       2760500 bytes
+Requests per second:    10551.86 [#/sec] (mean)
+Time per request:       0.948 [ms] (mean)
+Time per request:       0.095 [ms] (mean, across all concurrent requests)
+Transfer rate:          59323.31 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       1
+Processing:     0    1   0.1      1       1
+Waiting:        0    0   0.1      0       1
+Total:          0    1   0.1      1       1
+
+Percentage of the requests served within a certain time (ms)
+  50%      1
+  66%      1
+  75%      1
+  80%      1
+  90%      1
+  95%      1
+  98%      1
+  99%      1
+ 100%      1 (longest request)
+
+------------------------------------------------------------------------------------gunicorn_dynamic-------------------------------------------------------------------------
+
+alexeyldd@fedora:~$ ab -n 500 -c 10  http://127.0.0.1:8000/
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Finished 500 requests
+
+
+Server Software:        gunicorn
+Server Hostname:        127.0.0.1
+Server Port:            8000
+
+Document Path:          /
+Document Length:        22870 bytes
+
+Concurrency Level:      10
+Time taken for tests:   20.248 seconds
+Complete requests:      500
+Failed requests:        0
+Total transferred:      11583500 bytes
+HTML transferred:       11435000 bytes
+Requests per second:    24.69 [#/sec] (mean)
+Time per request:       404.964 [ms] (mean)
+Time per request:       40.496 [ms] (mean, across all concurrent requests)
+Transfer rate:          558.67 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:    61  400  37.2    403     477
+Waiting:       61  400  37.2    403     476
+Total:         62  400  37.2    403     477
+
+Percentage of the requests served within a certain time (ms)
+  50%    403
+  66%    405
+  75%    407
+  80%    408
+  90%    412
+  95%    425
+  98%    452
+  99%    469
+ 100%    477 (longest request)
+
+----------------------------------------------------------------------------nginx_dynamic_without_cache----------------------------------------------------------------------
+
+alexeyldd@fedora:~$ ab -n 500 -c 10  http://127.0.0.1:8080/
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Finished 500 requests
+
+
+Server Software:        nginx/1.24.0
+Server Hostname:        127.0.0.1
+Server Port:            8080
+
+Document Path:          /
+Document Length:        22870 bytes
+
+Concurrency Level:      10
+Time taken for tests:   20.371 seconds
+Complete requests:      500
+Failed requests:        0
+Total transferred:      11585500 bytes
+HTML transferred:       11435000 bytes
+Requests per second:    24.54 [#/sec] (mean)
+Time per request:       407.421 [ms] (mean)
+Time per request:       40.742 [ms] (mean, across all concurrent requests)
+Transfer rate:          555.39 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       1
+Processing:     1  404  38.8    404     475
+Waiting:        0  404  38.8    404     475
+Total:          1  404  38.8    405     475
+
+Percentage of the requests served within a certain time (ms)
+  50%    405
+  66%    408
+  75%    413
+  80%    418
+  90%    427
+  95%    443
+  98%    463
+  99%    468
+ 100%    475 (longest request)
+
+----------------------------------------------------------------------------nginx_dynamic_with_cache-------------------------------------------------------------------------
+
+alexeyldd@fedora:~$ ab -n 500 -c 10  http://127.0.0.1:8080/
+This is ApacheBench, Version 2.3 <$Revision: 1903618 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking 127.0.0.1 (be patient)
+Completed 100 requests
+Completed 200 requests
+Completed 300 requests
+Completed 400 requests
+Completed 500 requests
+Finished 500 requests
+
+
+Server Software:        nginx/1.24.0
+Server Hostname:        127.0.0.1
+Server Port:            8080
+
+Document Path:          /
+Document Length:        22870 bytes
+
+Concurrency Level:      10
+Time taken for tests:   0.379 seconds
+Complete requests:      500
+Failed requests:        0
+Total transferred:      11585500 bytes
+HTML transferred:       11435000 bytes
+Requests per second:    1320.76 [#/sec] (mean)
+Time per request:       7.571 [ms] (mean)
+Time per request:       0.757 [ms] (mean, across all concurrent requests)
+Transfer rate:          29886.06 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       0
+Processing:     0    5  36.2      0     377
+Waiting:        0    5  36.2      0     377
+Total:          0    5  36.2      0     377
+
+Percentage of the requests served within a certain time (ms)
+  50%      0
+  66%      0
+  75%      0
+  80%      0
+  90%      0
+  95%      0
+  98%     86
+  99%    246
+ 100%    377 (longest request)
+
+
